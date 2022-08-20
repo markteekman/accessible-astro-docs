@@ -1,57 +1,27 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro'
+import Default from '../layouts/Default.astro'
 ---
 
-<DefaultLayout title="Home">
+<Default title="Home">
   <section class="margin-48">
-    <div class="container">
-      <h1>Accessible Astro <em>Starter</em></h1><br>
+    <div class="container space-content">
+      <h1>Accessible Astro <em>Docs</em> (Coming Soon)</h1>
+      <p>There is a documentation website being build for the Accessible Astro Starter theme and the Accessible Astro Components package. Meanwhile, the demo's of these two can be viewed here:</p>
+      <ul>
+        <li><a href="https://starter.accessible-astro.dev">Accessible Astro Starter</a></li>  
+        <li><a href="https://dashboard.accessible-astro.dev">Accessible Astro Dashboard</a></li>  
+        <li><a href="https://components.accessible-astro.dev">Accessible Astro Components</a></li>  
+      </ul>
     </div>
   </section>
-  <section class="padding-48 color-primary">
-    <div class="container">
-      <h2 class="margin-16 bottom">Auto Grid</h2>
-    </div>
-    <div class="container" data-auto-grid="3">
-      <div class="text-neutral-100 bg-neutral-900 space-32 radius-large elevation-500" data-animation="fade-in">
-        <h3>Column 1</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem accusantium placeat eius officiis veniam totam. Earum eos et voluptate dolorem. </p>
-      </div>
-      <div class="text-neutral-100 bg-neutral-900 space-32 radius-large elevation-500" data-animation="fade-in" data-animation-delay="0.25s">
-        <h3>Column 2</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem accusantium placeat eius officiis veniam totam. Earum eos et voluptate dolorem.</p>
-      </div>
-      <div class="text-neutral-100 bg-neutral-900 space-32 radius-large elevation-500" data-animation="fade-in" data-animation-delay="0.5s">
-        <h3>Column 3</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem accusantium placeat eius officiis veniam totam. Earum eos et voluptate dolorem.</p>
-      </div>
-    </div>
-    <div class="container margin-16 top">
-      <a href="#" class="button">Tab to me first!</a>&nbsp;
-      <a href="#" class="button color-secondary">Then it's my turn</a>
+  <section class="margin-48 bottom">
+    <div class="container space-content">
+      <h2>Repositories</h2>
+      <div class="repo-card" data-repo="markteekman/accessible-astro-starter" data-theme="dark-theme"></div>
+      <div class="repo-card" data-repo="markteekman/accessible-astro-dashboard" data-theme="dark-theme"></div>
+      <div class="repo-card" data-repo="markteekman/accessible-astro-components" data-theme="dark-theme"></div>
     </div>
   </section>
-  <section class="margin-64">
-    <div class="container">
-      <div class="grid">
-        <div class="small-12">
-          <h2>12 Column Grid</h2>
-        </div>
-        <div class="small-12 medium-3 space-content">
-          <h3>Sidebar</h3>
-          <ul>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-          </ul>
-        </div>
-        <div class="small-12 medium-8 offset-medium-4 space-content">
-          <h3>Main</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi mollitia alias sunt accusamus reiciendis fuga delectus, repellendus molestiae dolore illo iusto eligendi eaque qui hic facilis assumenda! Velit, minus, nobis. <strong><a href="#">And lastely tab to me</a></strong>.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi mollitia alias sunt accusamus reiciendis fuga delectus, repellendus molestiae dolore illo iusto eligendi eaque qui hic facilis assumenda! Velit, minus, nobis.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</DefaultLayout>
+</Default>
+
+
