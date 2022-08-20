@@ -4,7 +4,7 @@ import { DarkMode } from 'accessible-astro-components'
 ---
 
 <div id="main-navigation" class="is-desktop padding-16 color-neutral">
-  <div class="container">
+  <div class="wrapper">
     <a href="/">
       <img src={(await import('../assets/img/logo.svg')).default} alt="Your Logo">
     </a>
@@ -200,10 +200,11 @@ import { DarkMode } from 'accessible-astro-components'
   @use '../assets/scss/base/size' as *;
 
   #main-navigation {
-    > .container {
+    > .wrapper {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      padding: 0 1rem;
     }
 
     &.is-desktop {

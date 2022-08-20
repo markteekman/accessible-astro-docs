@@ -1,14 +1,9 @@
 ---
-import '../assets/scss/globals.scss'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
-
 const {title} = Astro.props
-let subtitle = 'Accessible Astro Starter'
+let subtitle = 'Accessible Astro Documentation'
 ---
 
-<html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -31,34 +26,3 @@ let subtitle = 'Accessible Astro Starter'
     <!-- page title -->
     <title>{title} - {subtitle}</title>
   </head>
-  <body>
-    <Header />
-    <main id="main-content">
-      <slot />
-    </main>
-    <Footer />
-  </body>
-</html>
-
-<style lang="scss">
-  // sticky footer on low content pages
-  html,
-  body {
-    height: 100%;
-    overflow-x: hidden;
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--background);
-
-    main {
-      flex: 1 0 auto;
-    }
-
-    footer {
-      flex-shrink: 0;
-    }
-  }
-</style>
