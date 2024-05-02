@@ -1,0 +1,130 @@
+---
+title: Notification
+---
+
+import {Notification} from 'accessible-astro-components';
+import { Icon } from 'astro-icon';
+import NoStarlightStyles from '../../../components/NoStarlightStyles.astro'
+
+Notifications display to inform the user of changing states on a website or application. Notifications may also be used to highlight notable information.
+
+There are two rules of using notifications.
+1. Add contextual information about the notification (e.g. success, warning, error, info)
+1. Use `role="status"` and `aria-live="polite"` to inform users of screen readers.
+
+To add visual appeal, you can combine the `Notification` component with [Astro Icon](https://github.com/natemoo-re/astro-icon);
+
+## Accessibility features
+* Use of color to identify the type of notification (e.g. success, warning, error, info)
+* In addition to color, provide contextual feedback by using the notification type as the title
+* Identify content for users of screen readers by using `role="status"` and `aria-live="polite"`
+
+## Usage
+Accessible Astro exports one notifications-related components:
+* `Notification`: The component which displays content identified by color and title with the given type
+
+### Props
+#### `Notification` Props
+* `type`
+  * **Description:** The type of notification to display
+  * **Type**: `string`
+  * **Accepted values:** `"default" | "error" | "info" | "success" | "warning"`
+  * **Default:** `"default"`
+* `role`
+  * **Description:** The role of the notification
+  * **Type**: `string`
+  * **Accepted values:** `"none" | "alert" | "log" | "marquee" | "region" | "timer"`
+  * **Default:** `"none"`
+* `ariaLive`
+  * **Description:** The value of the `aria-live` attribute
+  * **Type**: `string`
+  * **Accepted values:** `"off" | "polite" | "assertive"`
+  * **Default:** `"off"`
+
+### Example
+
+<NoStarlightStyles>
+  <Notification
+    type="info"
+    role="status"
+    aria-live="polite"
+  >
+    <Icon pack="ion" name="information-circle-outline" size={32} /><p><strong>Info:</strong> This is the second notification using `astro-icon` from the following example.</p>
+  </Notification>
+</NoStarlightStyles>
+
+```astro
+---
+import { Notification } from 'accessible-astro-components'
+---
+<Notification
+  type="info"
+>
+  <p><strong>Info:</strong> This is a notification of type info.</p>
+</Notification>
+
+<!-- example using Astro Icon -->
+<Notification
+  type="info"
+>
+  <Icon pack="ion" name="information-circle-outline" /><p><strong>Info:</strong> This is a notification of type info.</p>
+</Notification>
+
+<!-- when added to the DOM after a user interaction -->
+<Notification
+  type="info"
+  role="status"
+  aria-live="polite"
+>
+  <p><strong>Info:</strong> This is a notification of type info.</p>
+</Notification>
+```
+
+## Style customizations
+Customize styles by:
+
+* setting individual properties with a `:global(body .{class)` selector (see [Anatomy](#anatomy) for class name reference)
+* setting a global style tag to define styles
+
+### Anatomy
+| Class name | Description |
+| --- | --- |
+| `.notification` | The container for the notification |
+| `.type-${thisType}` | The container for the notification of type `thisType`. May be `info`, `success`, `warning`, or `error`.  |
+
+### Example
+```astro
+<style lang="scss" is:global>
+  body {
+    .notification {
+      color: var(--neutral-900, #202427);
+      background-color: var(--neutral-200, #f6f8f9);
+      border: 2px solid var(--neutral-600, #858d93);
+
+      &.type-info {
+        color: var(--info-900, #035486);
+        background-color: var(--info-100, #e0f7ff);
+        border-color: var(--info-600, #1a91d1);
+      }
+
+      &.type-success {
+        color: var(--success-900, #014b3e);
+        background-color: var(--success-100, #eefcf6);
+        border-color: var(--success-500, #28a980);
+      }
+
+      &.type-warning {
+        color: var(--warning-900, #8e2a0b);
+        background-color: var(--warning-100, #fffbeb);
+        border-color: var(--warning-600, #dc901e);
+      }
+
+      &.type-error {
+        color: var(--error-900, #5e0317);
+        background-color: var(--error-100, #ffe0e0);
+        border-color: var(--error-500, #df2a39);
+      }
+    }
+  }
+</style>
+```

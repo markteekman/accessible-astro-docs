@@ -1,0 +1,138 @@
+---
+title: Pagination
+draft: true
+---
+
+import NoStarlightStyles from '../../../components/NoStarlightStyles.astro';
+
+`Pagination` is a component which has first, previous, next, and last page buttons. It includes text that informs a user the total number of pages and which page they are currently visiting. The `Pagination` component is fully accessible and keyboard navigable.
+
+## Accessibility features
+* `aria-label` informs the user whether they will navigate to the previous page, next page, and which page number.
+* `aria-hidden` to hide the icons for previous and next pages
+* Disables the first and previous page buttons when on the first page
+* Disables the last and next page buttons when on the last page
+
+## Usage
+Accessible Astro exports one pagination-related components:
+* `Pagination`: The pagination component
+
+### Props
+#### `Pagination` Props
+* `firstPage`
+* **Description:** A path to the first page
+* **Type**: `string`
+* **Default:** `"#"`
+* `prevousPage`
+* **Description:** A path to the previous page
+* **Type**: `string`
+* **Default:** `"#"`
+* `nextPage`
+* **Description:** A path to the next page
+* **Type**: `string`
+* **Default:** `"#"`
+* `lastPage`
+* **Description:** A path to the last page
+* **Type**: `string`
+* **Default:** `"#"`
+* `currentPage`
+* **Description:** The current page number
+* **Type**: `number`
+* **Default:** `1`
+* `totalPages`
+* **Description:** The total number of pages
+* **Type**: `number`
+* **Default:** `12`
+* `renderProgress`
+* **Description:** A function that returns a string to display current page and total pages
+* **Type**:
+```typescript
+(context: {currentPage: string | number; totalPages: string | number;}) => string;
+    ```
+* **Default:**
+```javascript
+  ({currentPage, totalPages}) => `${currentPage} of ${totalPages}`
+    ```
+
+### Example
+
+<NoStarlightStyles>
+  A component can go here
+</NoStarlightStyles>
+
+```astro
+---
+import { Pagination } from 'accessible-astro-components'
+---
+<Pagination
+  firstPage="/1"
+  previousPage="/4"
+  nextPage="/6"
+  lastPage="/10"
+  currentPage="/5"
+  totalPages="10"
+/>
+```
+
+## Style customizations
+Customize styles by:
+
+* setting individual properties with a `:global(body .{class)` selector (see [Anatomy](#anatomy) for class name reference)
+* setting a global style tag to define styles
+
+### Anatomy
+| Class | Description |
+| --- | --- |
+| `pagination` | The root container for the pagination component |
+| `pagination__list` | Styles applied to the unordered list |
+
+### Example
+```astro
+<style lang="scss" is:global>
+  body .pagination a {
+    svg path {
+      stroke: gold;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: purple;
+
+      svg path {
+        stroke: white;
+      }
+    }
+
+    .disabled {
+      border-color: red;
+      opacity: 0.1;
+    }
+  }
+</style>
+```
+
+## Specific examples
+### Using Astro's [Dynamic Pages](https://docs.astro.build/core-concepts/astro-pages#dynamic-pages) feature
+
+```astro
+---
+import { Pagination } from 'accessible-astro-components'
+
+export async function getStaticPaths({ paginate }) {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+  const data = await response.json()
+
+  return paginate(data, { pageSize: 6 })
+}
+
+const { page } = Astro.props
+---
+<Pagination
+  firstPage={page.url.prev ? '/blog' : null}
+  previousPage={page.url.prev ? page.url.prev : null}
+  nextPage={page.url.next ? page.url.next : null}
+  lastPage={page.url.next ? `/blog/${Math.round(page.total / page.size)}` : null}
+  currentPage={page.currentPage}
+  totalPages={Math.round(page.total / page.size)}
+/>
+```

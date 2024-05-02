@@ -1,0 +1,132 @@
+---
+title: Modal
+---
+
+import {Modal} from 'accessible-astro-components';
+import NoStarlightStyles from '../../../components/NoStarlightStyles.astro'
+
+`Modals` are windows that appear on top of the main site, usually disabling the use of the parent screen and requiring action from the user.
+
+They are intrusive and should be used sparingly. They are useful to confirm destructive actions from the user before proceeding. If you want to communicate with the user, but don't require the user's interaction, use a [Notification component](/components/notification) instead.
+
+Modals are typically triggered by a `<button>`. Provide a button with an `id` to link the button to the `Modal` component and provide required functionality for opening the targeted `Modal`.
+
+## Accessibility features
+* The modal may be closed using the `Escape` key
+* Focus is trapped within the modal when using `Tab` and `Shift + Tab` key combinations
+* The Modal is linked to the trigger element using the `id` and `aria-labeledby` attributes
+* Focus is returned to the element that triggered the modal when the modal is closed
+* The `closeModal()` function is exposed to use as a callback in your own JavaScript
+
+## Usage
+Accessible Astro exports two modal-related components:
+* `Modal`: The modal functionality and linking to a specific button ID.
+
+### Props
+#### `Modal` Props
+* `triggerId`
+  * **Description:** The ID of the button to use to open the modal
+  * **Type**: `string`
+  * **Default:** `undefined`
+* `title`
+  * **Description:** The title of the modal
+  * **Type**: `string`
+  * **Default:** `undefined`
+* `closeText`
+  * **Description:** The title of the modal's close button
+  * **Type**: `string`
+  * **Default:** `"Close""`
+
+### Example
+
+<NoStarlightStyles>
+  <button id="modal1-trigger">Modal 1</button>
+  <button id="modal2-trigger">Modal 2</button>
+
+  <Modal
+    triggerId="modal1-trigger"
+    title="Modal 1"
+  >
+    <p>Why hello, I be the <strong>first</strong> Modal.</p>
+  </Modal>
+  <Modal
+    triggerId="modal2-trigger"
+    title="Modal 2"
+    closeText="Cancel"
+  >
+    <p>Ah yes, and I be the <strong>second</strong> Modal.</p>
+    <button onclick="closeModal()">Confirm action</button>
+  </Modal>
+</NoStarlightStyles>
+
+```astro
+---
+import { Modal } from 'accessible-astro-components'
+---
+<button id="modal1-trigger">Modal 1</button>
+<button id="modal2-trigger">Modal 2</button>
+
+<Modal
+  triggerId="modal1-trigger"
+  title="Modal 1"
+>
+  <p>Why hello, I be the <strong>first</strong> Modal.</p>
+</Modal>
+<Modal
+  triggerId="modal2-trigger"
+  title="Modal 2"
+  closeText="Cancel"
+>
+  <p>Ah yes, and I be the <strong>second</strong> Modal.</p>
+  <!--
+    calls the closeModal function, you can also use this
+    as a callback in your own function
+  -->
+  <button onclick="closeModal()">Confirm action</button>
+</Modal>
+```
+
+## Style customizations
+Customize styles by:
+
+* setting individual properties with a `:global(body .{class)` selector (see [Anatomy](#anatomy) for class name reference)
+* setting a global style tag to define styles
+
+### Anatomy
+| Class | Description |
+| --- | --- |
+| `modal` | The modal container |
+| `modal__inner` | The inner container of the modal |
+| `modal__content` | The content of the modal |
+| `modal__close` | The close button container |
+
+### Example
+```astro
+<style lang="scss" is:global>
+  body {
+    .modal {
+        color: purple;
+        background-color: gold;
+      }
+
+    .modal__inner {
+      border-color: orange;
+    }
+
+    .modal__content {
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+
+    .modal__close button {
+      color: white;
+      background-color: blue;
+
+      &:hover,
+      &:focus {
+        background-color: green;
+      }
+    }
+  }
+</style>
+```
