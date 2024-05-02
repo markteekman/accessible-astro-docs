@@ -1,0 +1,64 @@
+---
+title: DarkMode
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import { DarkMode } from 'accessible-astro-components'
+import NoStarlightStyles from '../../../components/NoStarlightStyles.astro'
+
+The `DarkMode` component is a toggle button used to add and remove a class of `.darkmode` to the `<body>` element based on the user's color scheme preference. The user's preference is saved to `localStorage` to preserve their choice for future visits.
+
+## Accessibility features
+
+* Informs screen readers whether the dark scheme is toggled utilizing the `aria-pressed` attribute
+* Informs screen reader users which scheme is toggled using `aria-label` attributes
+* Uses `aria-hidden` to hide the icons from screen readers and uses the `aria-label` attributes instead
+
+## Usage
+
+Accessible Astro exports one dark mode-related component:
+* `DarkMode`: The toggle button that changes the color scheme of the page
+
+### Props
+#### `DarkMode` Props
+The `DarkMode` component does not accept any props.
+
+### Example
+<Aside type="note">
+  The documentation theme does not use the same class as the toggle sets, and so the toggle will not change the color
+  mode on this page.
+</Aside>
+
+<NoStarlightStyles>
+  <DarkMode/>
+</NoStarlightStyles>
+
+
+
+
+```astro
+---
+import { DarkMode } from 'accessible-astro-components'
+---
+<DarkMode />
+
+<style lang="scss">
+  body.darkmode {
+    // define your dark color scheme
+  }
+</style>
+```
+
+
+## Style customization
+
+Customize styles by:
+
+* setting individual properties with a `:global(body .{class)` selector (see [Anatomy](#anatomy) for class name reference)
+* setting a global style tag to define styles
+
+### Anatomy
+
+| Class                      | Use                                                                               |
+|----------------------------|-----------------------------------------------------------------------------------|
+| `darkmode-toggle`                     | The root class for the DarkMode component                                             |

@@ -1,0 +1,113 @@
+---
+title: Accordion
+---
+
+import {Accordion, AccordionItem} from 'accessible-astro-components'
+import NoStarlightStyles from '../../../components/NoStarlightStyles.astro'
+
+Accordions group long content into scannable headers which the user can expand to read the associated content.
+
+[Usage guidance](https://www.nngroup.com/articles/accordions-complex-content/)
+
+## Accessibility features
+
+* Move focus between `AccordionItems` using the `ArrowUp` and `ArrowDown` keys
+* Close an open `AccordionItem` using the `Escape` key
+* Assist screen reader identification with `aria-controls`, `aria-labelledby`, and `aria-expanded`.
+* Assist screen readers with an unordered list structure which allows them to announce to the user the number of items
+  and which item is currently selected
+
+## Usage
+
+Accessible Astro exports two accordion-related components:
+* `Accordion`: The wrapper for an accordion
+* `AccordionItem`: The component that defines a single accordion item
+
+### Props
+#### `Accordion` Props
+`Accordion` does not have any props. It accepts one or more `AccordionItem` component(s) in the default slot.
+#### `AccordionItem` Props
+* `header`
+  * **Description:** The title to use for the accordion item
+  * **Type**: `string`
+
+### Example
+
+<NoStarlightStyles>
+  <Accordion>
+    <AccordionItem
+      header="First Item"
+    >
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quasi nobis optio? Qui in quo accusantium debitis sapiente obcaecati magnam incidunt sit. Molestiae exercitationem quibusdam quod veritatis laboriosam est tenetur. </p>
+      <a href="#">Tab to me!</a>
+    </AccordionItem>
+    <AccordionItem
+      header="Second Item"
+    >
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quasi nobis optio? Qui in quo accusantium debitis sapiente obcaecati magnam incidunt sit. Molestiae exercitationem quibusdam quod veritatis laboriosam est tenetur. </p>
+    </AccordionItem>
+  </Accordion>
+</NoStarlightStyles>
+
+```astro
+---
+import { Accordion, AccordionItem } from 'accessible-astro-components'
+---
+<Accordion>
+  <AccordionItem
+    header="First Item"
+  >
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quasi nobis optio? Qui in quo accusantium debitis sapiente obcaecati magnam incidunt sit. Molestiae exercitationem quibusdam quod veritatis laboriosam est tenetur. </p>
+    <a href="#">Tab to me!</a>
+  </AccordionItem>
+  <AccordionItem
+    header="Second Item"
+  >
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quasi nobis optio? Qui in quo accusantium debitis sapiente obcaecati magnam incidunt sit. Molestiae exercitationem quibusdam quod veritatis laboriosam est tenetur. </p>
+  </AccordionItem>
+
+  <!-- ... -->
+
+</Accordion>
+```
+
+
+## Style customization
+
+Customize styles by:
+
+* setting individual properties with a `:global(body .{class)` selector (see [Anatomy](#anatomy) for class name reference)
+* setting a global style tag to define styles
+
+### Anatomy
+
+| Class                      | Use                                               |
+|----------------------------|---------------------------------------------------|
+| `accordion`                | The root class for the accordion component        |
+| `accordion__wrapper`       | The wrapper class for the accordion component     |
+| `accordion__item`          | An individual item in the accordion component     |
+| `accordion__header`        | The header in an accordion item                   |
+| `header__toggle-indicator` | The open/close icon for the accordion item        |
+| `accordion_panel`          | The panel for the accordion content               |
+| `panel__inner`             | The inner wrapper for the accordion content panel |
+
+### Example
+
+```astro
+<style lang="scss" is:global>
+  body .accordion__item {
+    button {
+      background-color: purple;
+
+      &:hover
+      &:focus {
+        background-color: peru;
+      }
+    }
+
+    &.is-active button {
+      background-color: peru;
+    }
+  }
+</style>
+```

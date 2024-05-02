@@ -1,27 +1,26 @@
 ---
-import Default from '../layouts/Default.astro'
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 ---
 
-<Default title="Home">
-  <section class="margin-48">
-    <div class="container space-content">
-      <h1>Accessible Astro <em>Docs</em> (Coming Soon)</h1>
-      <p>There is a documentation website being build for the Accessible Astro Starter and Dashboard themes and the Accessible Astro Components package. Meanwhile, the demo's of these three can be viewed here:</p>
-      <ul>
-        <li><a href="https://starter.accessible-astro.dev">Accessible Astro Starter</a></li>  
-        <li><a href="https://dashboard.accessible-astro.dev">Accessible Astro Dashboard</a></li>  
-        <li><a href="https://components.accessible-astro.dev">Accessible Astro Components</a></li>  
-      </ul>
-    </div>
-  </section>
-  <section class="margin-48 bottom">
-    <div class="container space-content">
-      <h2>Repositories</h2>
-      <div class="repo-card" data-repo="markteekman/accessible-astro-starter" data-theme="dark-theme"></div>
-      <div class="repo-card" data-repo="markteekman/accessible-astro-dashboard" data-theme="dark-theme"></div>
-      <div class="repo-card" data-repo="markteekman/accessible-astro-components" data-theme="dark-theme"></div>
-    </div>
-  </section>
-</Default>
+<StarlightPage frontmatter={{ title: 'Accessible Astro Docs (Coming Soon)' }}>
+    <section class="margin-48">
+        <div class="container space-content">
+            <p>There is a documentation website being build for the Accessible Astro Starter and Dashboard themes and the Accessible Astro Components package. Meanwhile, the demo's of these three can be viewed here:</p>
+            <ul>
+                <li><a href="https://starter.accessible-astro.dev">Accessible Astro Starter</a></li>
+                <li><a href="https://dashboard.accessible-astro.dev">Accessible Astro Dashboard</a></li>
+                <li><a href="https://components.accessible-astro.dev">Accessible Astro Components</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="margin-48 bottom">
+        <div class="container space-content">
+            <h2>Repositories</h2>
+            <div class="repo-card" data-repo="markteekman/accessible-astro-starter" data-theme="dark-theme"></div>
+            <div class="repo-card" data-repo="markteekman/accessible-astro-dashboard" data-theme="dark-theme"></div>
+            <div class="repo-card" data-repo="markteekman/accessible-astro-components" data-theme="dark-theme"></div>
+        </div>
+    </section>
+</StarlightPage>
 
 

@@ -1,0 +1,41 @@
+---
+import { Card } from 'accessible-astro-components'
+---
+<ul>
+    <li>
+        <Card
+                url="#"
+                title="My Awesome Post"
+                footer="Tony Stark"
+        >
+            Lorem ipsum dolor sit amet.
+        </Card>
+    </li>
+    <li>
+        <Card
+                url="#"
+                title="My Other Awesome Post"
+                footer="Tony Stark"
+        >
+            Lorem ipsum dolor sit amet.
+        </Card>
+    </li>
+</ul>
+
+<style lang="css">
+  ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 4rem;
+      list-style: none;
+
+    @media (min-width: 550px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem;
+    }
+
+    @media (min-width: 950px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
