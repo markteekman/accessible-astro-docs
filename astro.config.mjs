@@ -11,7 +11,7 @@ export default defineConfig({
     },
     logo: { src: './src/assets/img/logo.svg', alt: 'Accessible Astro Docs', replacesTitle: false },
     favicon: 'favicon.svg',
-    editLink: { baseUrl: 'https://github.com/markteekman/accessible-astro-docs' },
+    editLink: { baseUrl: 'https://github.com/markteekman/accessible-astro-docs/edit/main/' },
     sidebar: [
       { label: 'Components', autogenerate: { directory: 'components' } },
       { label: 'Contribute', link: '/contribute' }
