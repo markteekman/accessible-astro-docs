@@ -1,0 +1,22 @@
+---
+import NoStarlightStyles from '../NoStarlightStyles.astro';
+import {Pagination} from "accessible-astro-components";
+---
+
+<NoStarlightStyles>
+    <Pagination
+            firstPage="/1"
+            previousPage="/4"
+            nextPage="/6"
+            lastPage="/10"
+            currentPage="/5"
+            totalPages="10"
+            renderProgress={({currentPage, totalPages}) => `${currentPage.replace('/', '')} of ${totalPages}`}
+    />
+</NoStarlightStyles>
+
+<style lang="css" is:global>
+    .pagination__list {
+        list-style: none;
+    }
+</style>

@@ -1,8 +1,8 @@
 ---
 title: Pagination
-draft: true
 ---
 
+import PaginationExample from '@components/examples/PaginationExample.astro'
 import NoStarlightStyles from '../../../components/NoStarlightStyles.astro';
 
 `Pagination` is a component which has first, previous, next, and last page buttons. It includes text that informs a user the total number of pages and which page they are currently visiting. The `Pagination` component is fully accessible and keyboard navigable.
@@ -20,45 +20,43 @@ Accessible Astro exports one pagination-related components:
 ### Props
 #### `Pagination` Props
 * `firstPage`
-* **Description:** A path to the first page
-* **Type**: `string`
-* **Default:** `"#"`
+  * **Description:** A path to the first page
+  * **Type**: `string`
+  * **Default:** `"#"`
 * `prevousPage`
-* **Description:** A path to the previous page
-* **Type**: `string`
-* **Default:** `"#"`
+  * **Description:** A path to the previous page
+  * **Type**: `string`
+  * **Default:** `"#"`
 * `nextPage`
-* **Description:** A path to the next page
-* **Type**: `string`
-* **Default:** `"#"`
+  * **Description:** A path to the next page
+  * **Type**: `string`
+  * **Default:** `"#"`
 * `lastPage`
-* **Description:** A path to the last page
-* **Type**: `string`
-* **Default:** `"#"`
+  * **Description:** A path to the last page
+  * **Type**: `string`
+  * **Default:** `"#"`
 * `currentPage`
-* **Description:** The current page number
-* **Type**: `number`
-* **Default:** `1`
+  * **Description:** The current page number
+  * **Type**: `number`
+  * **Default:** `1`
 * `totalPages`
-* **Description:** The total number of pages
-* **Type**: `number`
-* **Default:** `12`
+  * **Description:** The total number of pages
+  * **Type**: `number`
+  * **Default:** `12`
 * `renderProgress`
-* **Description:** A function that returns a string to display current page and total pages
-* **Type**:
-```typescript
-(context: {currentPage: string | number; totalPages: string | number;}) => string;
-    ```
-* **Default:**
-```javascript
-  ({currentPage, totalPages}) => `${currentPage} of ${totalPages}`
-    ```
+  * **Description:** A function that returns a string to display current page and total pages
+  * **Type**:
+    ```typescript
+    (context: {currentPage: string | number; totalPages: string | number;}) => string;
+      ```
+  * **Default:**
+      ```javascript
+        ({currentPage, totalPages}) => `${currentPage} of ${totalPages}`
+      ```
 
 ### Example
 
-<NoStarlightStyles>
-  A component can go here
-</NoStarlightStyles>
+<PaginationExample />
 
 ```astro
 ---
@@ -112,7 +110,7 @@ Customize styles by:
 ```
 
 ## Specific examples
-### Using Astro's [Dynamic Pages](https://docs.astro.build/core-concepts/astro-pages#dynamic-pages) feature
+### Astro's [Dynamic Pages](https://docs.astro.build/en/guides/markdown-content/#example-dynamic-page-routing) feature
 
 ```astro
 ---
