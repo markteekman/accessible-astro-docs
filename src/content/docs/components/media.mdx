@@ -1,0 +1,56 @@
+---
+title: Media
+editUrl: https://github.com/markteekman/accessible-astro-docs/edit/main/src/content/docs/components/media.mdx
+---
+import {Media} from 'accessible-astro-components';
+import NoStarlightStyles from '@components/NoStarlightStyles.astro';
+
+`Media` is a component that displays `<img>` tags. It has a default empty `alt` tag which is required for non-decorative images. If the image is descriptive, for example, when there is no complementary text, then a descriptive `alt` tag must be used. The `Media` component also utilizes the `loading="lazy"` tag to optimize browser performance.
+
+[Usage guidance](https://www.w3.org/WAI/tutorials/images/decorative/)
+
+## Accessibility features
+* Sets a default empty `alt` tag, which is required for non-descriptive images
+
+## Usage
+Accessible Astro exports one media-related components:
+* `Media`: The image Component with a default `alt` tag
+
+### Props
+#### `Media` Props
+* `alt`
+  * **Description:** Descriptive text to use as the `alt` attribute of the image
+  * **Type**: `string`
+  * **Default:** `''`
+* `class`
+  * **Description:** One or more class names, as a string, to be applied to the `img` tag
+  * **Type**: `string`
+  * **Default:** `undefined`
+* `src`
+  * **Description:** The source URL of the image
+  * **Type**: `string`
+  * **Default:** `https://fakeimg.pl/640x360`
+
+### Example
+
+<NoStarlightStyles>
+  <Media
+    src="/img/kobby-mendez-d0oYF8hm4GI-unsplash.jpg"
+    alt="A tiny toy astronaut, sitting on a yellow toy moon"
+  />
+  Photo by <a href="https://unsplash.com/@kobbymendez?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kobby Mendez</a> on <a href="https://unsplash.com/photos/white-and-brown-robot-toy-d0oYF8hm4GI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+</NoStarlightStyles>
+
+```astro
+---
+import { Media } from 'accessible-astro-components'
+---
+<Media
+  classes="elevation-300 radius-large"
+  src="https://unsplash.com/photos/d0oYF8hm4GI"
+  alt="A tiny toy astronaut, sitting on a yellow toy moon"
+/>
+```
+
+## Style customizations
+The `Media` component does not have any unique classes. Style it like other `img` tags.

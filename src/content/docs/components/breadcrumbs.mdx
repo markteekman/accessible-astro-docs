@@ -1,0 +1,104 @@
+---
+title: Breadcrumbs
+editUrl: https://github.com/markteekman/accessible-astro-docs/edit/main/src/content/docs/components/breadcrumbs.mdx
+---
+
+import {Breadcrumbs, BreadcrumbsItem} from 'accessible-astro-components'
+import NoStarlightStyles from '../../../components/NoStarlightStyles.astro'
+
+Breadcrumbs help users navigate to a previous page or section. They also help screen reader users understand where they are in the website.
+
+[Usage guidance](https://www.nngroup.com/articles/breadcrumbs/)
+
+## Accessibility features
+
+* Helps screen reader identify content to users by using `aria-label="Breadcrumbs"`
+* Helps screen readers identify lists to users, like how many items there are and which item is in focus
+* Helps screen readers identify navigation by using a `<nav>` element
+
+## Usage
+
+Accessible Astro exports two breadcrumb-related components:
+* `Breadcrumbs`: The wrapper for breadcrumbs
+* `BreadcrumbsItem`: The component that defines a single breadcrumb item
+
+### Props
+#### `Breadcrumbs` Props
+`Breadcrumbs` does not have any props. It accepts one or more `BreadcrumbItem` component(s) in the default slot.
+#### `BreadcrumbsItem` Props
+* `label`
+  * **Description:** The label text to display for this breadcrumb
+  * **Type**: `string`
+* `currentPage`
+  * **Description:** When set to `true`, the breadcrumb item will not be wrapped in a link. When set to `false`, the breadcrumb item will be wrapped in a link to `href`.
+  * **Type:** `boolean`
+  * **Default:** `false`
+* `href`
+  * **Description:** An optional path to link this breadcrumb item to
+  * **Type**: `string`
+  * **Default**: `"#"`
+
+### Example
+---
+<NoStarlightStyles>
+  <Breadcrumbs>
+    <BreadcrumbsItem
+      href="/"
+      label="Home"
+    />
+    <BreadcrumbsItem
+      href="/blog"
+      label="Blog"
+    />
+    <BreadcrumbsItem
+      currentPage={true}
+      label="My blog post"
+    />
+  </Breadcrumbs>
+</NoStarlightStyles>
+---
+
+```astro
+---
+import { Breadcrumbs, BreadcrumbsItem } from 'accessible-astro-components'
+---
+<Breadcrumbs>
+  <BreadcrumbsItem
+    href="/"
+    label="Home"
+  />
+  <BreadcrumbsItem
+    href="/blog"
+    label="Blog"
+  />
+  <BreadcrumbsItem
+    currentPage={true}
+    label="My blog post"
+  />
+</Breadcrumbs>
+```
+
+## Style customization
+
+Customize styles by:
+
+* setting individual properties with a `:global(body .{class)` selector (see [Anatomy](#anatomy) for class name reference)
+* setting a global style tag to define styles
+
+### Anatomy
+
+| Class                      | Use                                               |
+|----------------------------|---------------------------------------------------|
+| `breadcrumbs`              | The root class for the breadcrumbs component      |
+| `breadcrumbs__item`        | An individual item in the breadcrumbs component   |
+
+### Example
+```astro
+<style lang="scss" is:global>
+  body .breadcrumbs__item {
+    li::after {
+      content: '>';
+    }
+  }
+</style>
+```

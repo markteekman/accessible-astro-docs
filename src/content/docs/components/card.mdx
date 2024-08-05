@@ -1,0 +1,126 @@
+---
+title: Card
+editUrl: https://github.com/markteekman/accessible-astro-docs/edit/main/src/content/docs/components/card.mdx
+---
+
+import CardComponent from '../../../components/examples/CardExample.astro'
+import NoStarlightStyles from '../../../components/NoStarlightStyles.astro'
+
+Cards are usually used in groups to display a collection of related content. They can contain images, text, and links. Cards are a great way to display content in a way that is visually appealing and easy to scan.
+
+Groups may present challenges for users who use screen readers or require a larger target area when making selections. To make cards accessible, follow these guidelines:
+* Wrap a group of cards in an unordered list (`<ul>`) and each card in a list item (`<li>`) to allow screen readers with shortcuts to lists and list items. Reference the example below for the list structure.
+* Use `display: grid` to ensure there's enough space between cards on touch devices for users who require a larger space to select an item. Leaving enough space makes it easier to scroll without unintentionally activating a card's link. Reference the example below for how to configure `display: grid`.
+
+## Accessibility features
+
+* The whole card is clickable using the `<a>` `::after` pseudo element
+* The user retains access to the context menu when right-clicking on the card
+* The title is an `<h3>` element, so it can be used in many contexts. (`<h2>` would have been too limiting)
+* For larger screen sizes, the `max-width` is set to `70ch` to maintain content text readability
+
+## Usage
+
+Accessible Astro exports one card-related component:
+* `Card`: The wrapper for an individual card
+
+### Props
+#### `Card` Props
+* `footer`
+* **Description:** The card footer text
+* **Type**: `string`
+* **Default**: `"Your name"`
+* `img`
+* **Description:** The path to an image to display in the card
+* **Type**: `string`
+* **Default**: `"https://fakeimg.pl/640x360"`
+* `title`
+* **Description:** The title text to display in the card
+* **Type**: `string`
+* **Default**: `"Default title"`
+* `url`
+* **Description:** The URL to link to when the card is clicked
+* **Type**: `string`
+* **Default**: `"#"`
+
+### Example
+<NoStarlightStyles>
+  <CardComponent/>
+</NoStarlightStyles>
+
+
+
+
+```astro
+---
+import { Card } from 'accessible-astro-components'
+---
+<ul>
+  <li>
+    <Card
+      url="/link-to-my-post"
+      img="/assets/post-cover.jpg"
+      title="My Awesome Post"
+      footer="Tony Stark"
+    >
+      Lorem ipsum dolor sit amet.
+    </Card>
+  </li>
+  <li>
+    <!-- ... -->
+  </li>
+</ul>
+
+<style lang="scss">
+  ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 4rem;
+
+    @media (min-width: 550px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem;
+    }
+
+    @media (min-width: 950px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
+```
+
+
+## Style customization
+
+Customize styles by:
+
+* setting individual properties with a `:global(body .{class)` selector (see [Anatomy](#anatomy) for class name reference)
+* setting a global style tag to define styles
+
+### Anatomy
+
+| Class                      | Use                                                                               |
+|----------------------------|-----------------------------------------------------------------------------------|
+| `card`                     | The root class for the card component                                             |
+| `card__image`              | The class for the `<div>` element that contains the card image                    |
+| `card__content`            | The class applied to the `<div>` element that contains the card title and content |
+
+### Example
+
+```astro
+<style lang="scss" is:global>
+  body .card {
+    color: purple;
+    background-color: blue;
+
+    a {
+      color: gold;
+    }
+  }
+
+  // set your own image height
+  .card__image {
+    height: 10rem;
+  }
+</style>
+```

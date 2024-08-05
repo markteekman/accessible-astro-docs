@@ -1,0 +1,64 @@
+---
+title: SkipLinks
+editUrl: https://github.com/markteekman/accessible-astro-docs/edit/main/src/content/docs/components/skiplinks.mdx
+---
+
+import SkipLinksExample from '../../../components/examples/SkipLinksExample.astro'
+
+SkipLinks provide users utilizing assistive technologies to skip directly to the main content of a website, bypassing repeated content like the site header and navigation.
+
+## Prerequisites
+The page must have one of the following, or a warning will be logged to the console.
+1. An element with an `id` of `main-content`
+1. An `<h1>` element
+
+## Accessibility features
+* Allows users utilizing assistive technologies to skip to the main content of a page
+
+## Usage
+
+Accessible Astro exports one skip links-related component:
+* `SkipLinks`: The link and scripts associated to allow users to skip to the main content of a page
+
+### Props
+#### `SkipLinks` Props
+The `SkipLinks` component does not accept any props.
+
+### Example
+
+<SkipLinksExample />
+
+```astro
+---
+import { SkipLinks } from 'accessible-astro-components'
+---
+<SkipLinks />
+```
+
+## Style customization
+
+Customize styles by:
+
+* setting individual properties with a `:global(body .{class)` selector (see [Anatomy](#anatomy) for class name reference)
+* setting a global style tag to define styles
+
+### Anatomy
+
+| Class                      | Use                                                                               |
+|----------------------------|-----------------------------------------------------------------------------------|
+| `skip-links`                     | The root class for the SkipLinks component                                             |
+
+### Example
+```astro
+<style lang="scss" is:global>
+  body .skiplinks a {
+    color: white;
+    background-color: purple;
+
+    &:hover
+    &:focus {
+      background-color: indigo;
+    }
+  }
+</style>
+```

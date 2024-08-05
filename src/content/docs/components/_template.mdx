@@ -1,0 +1,44 @@
+---
+title: Component
+draft: true
+---
+
+import NoStarlightStyles from '../../../components/NoStarlightStyles.astro'
+
+## Accessibility features
+## Usage
+Accessible Astro exports two {%component%}-related components:
+* `PartA`: The wrapper for an {%component%}
+* `PartB`: The component that defines a single {%component%} item
+
+### Props
+#### `PartA` Props
+`PartA` does not have any props. It accepts one or more `PartB` component(s) in the default slot.
+#### `PartB` Props
+* `header`
+  * **Description:** The title to use for the accordion item
+  * **Type**: `string`
+  * **Default:** `"Default title"`
+
+### Example
+
+<NoStarlightStyles>
+  A component can go here
+</NoStarlightStyles>
+
+```astro
+
+```
+
+## Style customizations
+Customize styles by:
+
+* setting individual properties with a `:global(body .{class)` selector (see [Anatomy](#anatomy) for class name reference)
+* setting a global style tag to define styles
+
+### Anatomy
+
+### Example
+```astro
+
+```

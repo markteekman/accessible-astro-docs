@@ -1,0 +1,14 @@
+---
+import NoStarlightStyles from '../NoStarlightStyles.astro';
+import {SkipLinks} from "accessible-astro-components";
+---
+
+<NoStarlightStyles>
+    <SkipLinks />
+</NoStarlightStyles>
+
+<style lang="css" is:global>
+    .skip-links a {
+        position: sticky;
+    }
+</style>

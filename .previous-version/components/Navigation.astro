@@ -5,8 +5,8 @@ import { DarkMode } from 'accessible-astro-components'
 
 <div id="main-navigation" class="is-desktop padding-16 color-neutral">
   <div class="wrapper">
-    <a href="/">
-      <img src={(await import('../assets/img/logo.svg')).default} alt="Your Logo">
+    <a href="/public">
+      <img src={(await import('../../src/assets/img/logo.svg')).default} alt="Your Logo">
     </a>
     <div class="wrapper">
       <nav class="desktop-menu">
@@ -193,11 +193,11 @@ import { DarkMode } from 'accessible-astro-components'
 </script>
 
 <style lang="scss" is:global>
-  @use '../assets/scss/base/border' as *;
-  @use '../assets/scss/base/breakpoint' as *;
-  @use '../assets/scss/base/elevation' as *;
-  @use '../assets/scss/base/outline' as *;
-  @use '../assets/scss/base/size' as *;
+  @use '../../src/assets/scss/base/border' as *;
+  @use '../../src/assets/scss/base/breakpoint' as *;
+  @use '../../src/assets/scss/base/elevation' as *;
+  @use '../../src/assets/scss/base/outline' as *;
+  @use '../../src/assets/scss/base/size' as *;
 
   #main-navigation {
     > .wrapper {

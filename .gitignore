@@ -1,3 +1,6 @@
+# generated types
+.astro
+
 # build output
 dist
 
@@ -25,3 +28,4 @@ yarn-error.log*
 
 # package lock
 package-lock.json
+pnpm-lock.yaml
